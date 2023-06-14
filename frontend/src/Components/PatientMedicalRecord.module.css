@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Roboto:wght@400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.patienttable {
+  font-family: "Poppins", sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.patienttable td,
+.patienttable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+button {
+  color: white;
+  padding: 10px;
+  border: 2px solid #cccc;
+  border-radius: 6px;
+  background-color: #136d6d;
+  font-size: 1rem;
+  margin-top: 4px;
+  display: inline-block;
+}
+
+.patienttable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.patienttable tr:hover {
+  background-color: #ddd;
+}
+
+.patienttable thead {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04aa6d;
+  color: white;
+}
+.header {
+  text-align: center;
+  background-color: #a5edd3;
+  font-family: "Poppins", sans-serif;
+}
+h3 {
+  text-align: center;
+}
+.navigationMenu {
+  margin-top: 40px;
+
+  width: 100%;
+}
+nav {
+  display: block;
+  padding-left: 43%;
+}

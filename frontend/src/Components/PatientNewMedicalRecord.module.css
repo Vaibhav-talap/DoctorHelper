@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.outer-box {
+  font-family: "Poppins", sans-serif;
+  width: 100%;
+  height: 50vw;
+  background-image: url(../../assests/10.jfif);
+  /* background: linear-gradient(to top left, #ccfff5, #00ffcc); */
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.inner-box {
+  width: 400px;
+  margin-inline: auto;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #38525450;
+  border-radius: 8px;
+  /* align-items: center; */
+  padding: 20px 40px;
+  box-shadow: 2px 2px 5px #32424783;
+}
+
+.signin-header h1 {
+  font-size: 2.5rem;
+  color: #212121;
+}
+.signin-body {
+  margin: 10px 0;
+}
+.signin-body div {
+  margin: 10px 0;
+}
+.signin-body div label {
+  display: block;
+}
+.signin-body div input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #cccc;
+  border-radius: 6px;
+  background-color: #21212154;
+  color: white;
+  font-size: 1rem;
+  margin-top: 4px;
+}
+.signin-body div button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: #13435c;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 10px;
+  color: white;
+}
+.signin-body div button:hover {
+  background-color: #0a222e;
+}
+
+.signup-footer div {
+  color: black;
+  text-align: center;
+}
+.link {
+  text-decoration: underline;
+}

@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Roboto:wght@400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --primary-text-color: #183b56;
+  --secondary-text-color: #577592;
+  --accent-color: #2294ed;
+  --accent-color-dark: #1d69a3;
+  --padding-inline-section: 20px;
+}
+.container {
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: var(--padding-inline-section);
+}
+.flex {
+  display: flex;
+  align-items: center;
+}
+/* .logo {
+  align-items: left;
+  justify-content: center;
+} */
+
+.logo h3 {
+  display: inline-block;
+  margin-left: 5px;
+  color: #2b4c48;
+
+  /* padding-bottom: 10px; */
+  /* margin-bottom: 10px; */
+}
+/* .logo i {
+  background-color: #0e5555;
+} */
+.header {
+  justify-content: space-between;
+  background-color: #ccfff5;
+  padding: 10px;
+}
+
+.nav-links ul {
+  justify-content: end;
+  gap: 40px;
+}
+ul {
+  list-style: none;
+}
+.link {
+  color: white !important;
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #cccc;
+  border-radius: 6px;
+  background-color: #136d6d;
+  font-size: 1rem;
+  margin-top: 4px;
+  text-decoration: none;
+}
+a:hover {
+  background-color: #125a5a;
+}
+
+.doctorHome-body {
+  font-family: "Poppins", sans-serif;
+  width: 100%;
+  height: 100vh;
+  background-image: url(../../assests/7resized.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.inner-box {
+  width: 400px;
+  margin-inline: auto;
+  position: relative;
+  top: 40%;
+  left: 9%;
+  transform: translateY(-90%);
+  background-color: #d0eae5b7;
+  border-radius: 8px;
+  /* align-items: center; */
+  padding: 20px 40px;
+  box-shadow: 2px 2px 5px #6ba39cc0;
+}
+
+.search-body {
+  margin: 10px 0;
+}
+.search-body div {
+  margin: 10px 0;
+}
+.search-body div label {
+  display: block;
+}
+.search-body div input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #cccc;
+  border-radius: 6px;
+  background-color: #21212154;
+  color: white;
+  font-size: 1rem;
+  margin-top: 4px;
+}
+.search-body div button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: #136d6d;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.search-body div button:hover {
+  background-color: #0e5555;
+}
