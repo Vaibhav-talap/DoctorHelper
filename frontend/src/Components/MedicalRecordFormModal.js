@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MedicalRecordModalClasses from './MedicalRecordFormModal.module.css';
+import JoditEditor from 'jodit-react';
+import { useRef } from "react";
+
 
 const MedicalRecordFormModal = (props) => {
     const id = props.patientId;
@@ -9,7 +12,7 @@ const MedicalRecordFormModal = (props) => {
     const recordId = props.record.id
 
     const [diseaseType, setDiseaseType] = useState(props.record.diseasetype);
-    const [medicinerecommeded, setMedicinerecommeded] = useState(props.record.recommededMedicine);
+    const [content, setContent] = useState(props.record.recommededMedicine);
     const [Medicalrecorddate, setMedicalRecordDate] = useState(props.record.date);
 
 
@@ -20,9 +23,11 @@ const MedicalRecordFormModal = (props) => {
         console.log(event.target.value)
         setDiseaseType(event.target.value);
     }
-    const medicalRecordMedicineHandler = (event) => {
-        setMedicinerecommeded(event.target.value);
-    }
+    // const medicalRecordMedicineHandler = (event) => {
+    //     setMedicinerecommeded(event.target.value);
+    // }
+    const editor = useRef(null);
+
 
     const MedicalRecoedSubmitHandler = (event) => {
         event.preventDefault();
@@ -31,7 +36,7 @@ const MedicalRecordFormModal = (props) => {
             const requestOptions = {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ id: recordId, date: Medicalrecorddate, diseasetype: diseaseType, recommededMedicine: medicinerecommeded, patient: id })
+                body: JSON.stringify({ id: recordId, date: Medicalrecorddate, diseasetype: diseaseType, recommededMedicine: content, patient: id })
             };
             fetch(`http://127.0.0.1:8000/clinic/medicalRecords/${props.record.id}/`, requestOptions)
                 .then(response => response.json())
@@ -42,7 +47,7 @@ const MedicalRecordFormModal = (props) => {
             const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ date: Medicalrecorddate, diseasetype: diseaseType, recommededMedicine: medicinerecommeded, patient: id })
+                body: JSON.stringify({ date: Medicalrecorddate, diseasetype: diseaseType, recommededMedicine: content, patient: id })
             };
             fetch('http://127.0.0.1:8000/clinic/medicalRecords/', requestOptions)
                 .then(response => response.json())
@@ -74,12 +79,20 @@ const MedicalRecordFormModal = (props) => {
                             <label htmlFor="diseaseType">Disease Type</label>
                             <input type="text" name="diseaseType" value={diseaseType} onChange={medicalRecordDiseaseTypeHandler} required />
                         </div>
-                        <div>
+                        {/* <div>
                             <label htmlFor="medicines">Recommeded Medicine</label>
                             <input type="text" name="medicines" value={medicinerecommeded} onChange={medicalRecordMedicineHandler} required />
-                        </div>
+                        </div> */}
+
                         <div>
-                            <button type="submit" >Submit</button>
+                            <label htmlFor="medicines">Recommeded Medicine</label>
+                            <JoditEditor
+                                ref={editor}
+                                value={content}
+                                onChange={newContent => setContent(newContent)}
+                            />                        </div>
+                        <div>
+                            <button type="submit" className={MedicalRecordModalClasses['submitbutton']}>Submit</button>
                         </div>
 
                     </form>
