@@ -7,6 +7,7 @@ from django.contrib.auth.hashers import make_password, check_password
 from django.views.decorators.csrf import csrf_exempt
 from .models import *
 from .serializers import *
+from rest_framework_simplejwt.tokens import RefreshToken
 
 
 # Create your views here.
@@ -100,7 +101,8 @@ def validateDoctor(request):
             return Response('Wrong Password', status=status.HTTP_401_UNAUTHORIZED)
 
         # If is valid gets true we have to return the token for the doctor
-        return Response('ok')
+        refresh = RefreshToken.for_user(doctor)
+        return Response({'refresh': str(refresh), 'access': str(refresh.access_token)})
 
 
 @api_view(['POST'])
