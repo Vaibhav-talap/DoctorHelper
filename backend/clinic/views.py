@@ -95,14 +95,14 @@ def validateDoctor(request):
 
         doctor = Doctor.objects.filter(email=checkemail).first()
         if (doctor == None):
-            return Response('The Doctor mail does not exists please do register first', status=status.HTTP_404_NOT_FOUND)
+            return Response({'responseMessage': 'The Doctor mail does not exists please do register first'}, status=status.HTTP_404_NOT_FOUND)
         isValid = check_password(password, doctor.password)
         if (isValid == False):
-            return Response('Wrong Password', status=status.HTTP_401_UNAUTHORIZED)
+            return Response({'responseMessage': 'Wrong Password'}, status=status.HTTP_401_UNAUTHORIZED)
 
         # If is valid gets true we have to return the token for the doctor
         refresh = RefreshToken.for_user(doctor)
-        return Response({'refresh': str(refresh), 'access': str(refresh.access_token)})
+        return Response({'refresh': str(refresh), 'access': str(refresh.access_token), 'responseMessage': 'ok'})
 
 
 @api_view(['POST'])

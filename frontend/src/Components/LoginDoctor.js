@@ -12,7 +12,13 @@ const LoginDoctor = () => {
     const [error, setError] = useState();
     var validatedData;
     const setvalidateedData = (data) => {
-        { data === 'ok' ? navigate('/doctorHome') : setError(data) }
+        // { data === 'ok' ? navigate('/doctorHome') : setError(data) }
+        // console.log(data.access);
+        // localStorage.setItem('token', data.access);
+        { data.responseMessage === 'ok' && localStorage.setItem('token', data.access) }
+        { data.responseMessage === 'ok' && navigate('/doctorHome') }
+        { data.responseMessage != 'ok' && setError(data.responseMessage) }
+
     }
 
     const emailHandler = (event) => {
