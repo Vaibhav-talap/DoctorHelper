@@ -1,11 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import ShowMedicinesModal from "./ShowMedicinesModal";
 
 import patientMedicalClasses from './PatientMedicalRecord.module.css';
 
 const PatientMedicalRecordList = () => {
     const { id } = useParams();
     const [patientMedicalRecord, setPatientMedicalRecord] = useState([]);
+    const [showRecordToggleModal, setShowRecordToggleModal] = useState(false);
+    const [showingRecord, setShowingRecord] = useState({});
+
+    let showRecord = {}
+
+    const showMedicineFormHandler = (medicalRecordId) => {
+        showRecord = patientMedicalRecord.find(record => record.id == medicalRecordId)
+        setShowingRecord(showRecord)
+        // console.log(beforeUpdateRecord)
+        // name = beforeUpdateRecord.diseasetype
+        setShowRecordToggleModal(!showRecordToggleModal)
+
+    }
+
+
+
+    const showModalDataHandler = () => {
+        setShowRecordToggleModal(!showRecordToggleModal)
+    }
 
 
 
@@ -65,6 +85,7 @@ const PatientMedicalRecordList = () => {
 
     return (
         <div>
+            {showRecordToggleModal && <ShowMedicinesModal onConfirm={showModalDataHandler} patientId={id} record={showingRecord} />}
             {/* {toggleModal && <MedicalRecordFormModal onConfirm={modalFormhandler} patientId={id} updateRenderBool={changeListHandler} />} */}
             <div className={patientMedicalClasses['container']}>
                 <div className={patientMedicalClasses['header']}>
@@ -86,7 +107,10 @@ const PatientMedicalRecordList = () => {
                                     <td>{i++}</td>
                                     <td>{medicalRecoed.date}</td>
                                     <td>{medicalRecoed.diseasetype}</td>
-                                    <td>{medicalRecoed.recommededMedicine}</td>
+                                    <td>
+                                        <button className="btn btn-info" onClick={() => showMedicineFormHandler(medicalRecoed.id)}><i class="fa-solid fa-eye"></i>  Show Deatils</button>
+                                    </td>
+                                    {/* <td>{medicalRecoed.recommededMedicine}</td> */}
                                     {/* <td>{medicalRecoed.patient}</td> */}
                                     {/* <td>
     <Link to={`/edit/${student.roll_no}`} className='btn btn-primary' style={{ color: "black" }}>Edit</Link>

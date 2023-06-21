@@ -2,19 +2,26 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import MedicalRecordFormModal from "./MedicalRecordFormModal";
 import patientMedicalClasses from './PatientMedicalRecord.module.css';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import ShowMedicinesModal from "./ShowMedicinesModal";
 
 const PatientMedicalRecord = () => {
     const { id } = useParams();
     const [patientMedicalRecord, setPatientMedicalRecord] = useState([]);
     const [renderBool, setRenderBool] = useState(false);
     const [toggleModal, setToggleModal] = useState(false);
+    const [showRecordToggleModal, setShowRecordToggleModal] = useState(false);
     const [beforeUpdateRecord, setBeforeUpdateRecord] = useState({});
+    const [showingRecord, setShowingRecord] = useState({});
     let bUpdateRecord = {}
+    let showRecord = {}
 
     const newRecordModalFormhandler = () => {
         setBeforeUpdateRecord({});
         setToggleModal(!toggleModal)
+    }
+    const showModalDataHandler = () => {
+        setShowRecordToggleModal(!showRecordToggleModal)
     }
 
     const updateRecordFormHandler = (medicalRecordId) => {
@@ -24,6 +31,14 @@ const PatientMedicalRecord = () => {
         console.log(beforeUpdateRecord)
         // name = beforeUpdateRecord.diseasetype
         setToggleModal(!toggleModal)
+
+    }
+    const showMedicineFormHandler = (medicalRecordId) => {
+        showRecord = patientMedicalRecord.find(record => record.id == medicalRecordId)
+        setShowingRecord(showRecord)
+        console.log(beforeUpdateRecord)
+        // name = beforeUpdateRecord.diseasetype
+        setShowRecordToggleModal(!showRecordToggleModal)
 
     }
 
@@ -89,6 +104,7 @@ const PatientMedicalRecord = () => {
 
     return (
         <div>
+            {showRecordToggleModal && <ShowMedicinesModal onConfirm={showModalDataHandler} patientId={id} record={showingRecord} />}
             {toggleModal && <MedicalRecordFormModal onConfirm={newRecordModalFormhandler} patientId={id} updateRenderBool={changeListHandler} record={beforeUpdateRecord} />}
             <div className={patientMedicalClasses['container']}>
                 <div className={patientMedicalClasses['header']}>
@@ -103,7 +119,7 @@ const PatientMedicalRecord = () => {
                                 <th>ID</th>
                                 <th>Date</th>
                                 <th>Disease Type</th>
-                                <th>recommeded Medicine</th>
+                                {/* <th>recommeded Medicine</th> */}
                                 {/* <th>patient ID</th> */}
                                 <th>Actions</th>
                             </thead>{patientMedicalRecoedSlice.map((medicalRecoed, index) => (
@@ -111,8 +127,10 @@ const PatientMedicalRecord = () => {
                                     <td>{i++}</td>
                                     <td>{medicalRecoed.date}</td>
                                     <td>{medicalRecoed.diseasetype}</td>
-                                    <td>{medicalRecoed.recommededMedicine}</td>
-                                    <td><button className="btn btn-warning" onClick={() => updateRecordFormHandler(medicalRecoed.id)}><i class="fa-regular fa-pen-to-square"></i>  Update</button></td>
+                                    {/* <td>{medicalRecoed.recommededMedicine}</td> */}
+                                    <td><button className="btn btn-warning" onClick={() => updateRecordFormHandler(medicalRecoed.id)}><i class="fa-regular fa-pen-to-square"></i>  Update</button>
+                                        <button className="btn btn-info" onClick={() => showMedicineFormHandler(medicalRecoed.id)}><i class="fa-solid fa-eye"></i>  Show Deatils</button>
+                                    </td>
                                     {/* <td>{medicalRecoed.patient}</td> */}
                                     {/* <td>
     <Link to={`/edit/${student.roll_no}`} className='btn btn-primary' style={{ color: "black" }}>Edit</Link>

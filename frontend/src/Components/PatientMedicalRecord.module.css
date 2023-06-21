@@ -43,6 +43,9 @@ button {
   background-color: #04aa6d;
   color: white;
 }
+.patienttable td button {
+  margin-inline: 10px;
+}
 .header {
   text-align: center;
   background-color: #a5edd3;
