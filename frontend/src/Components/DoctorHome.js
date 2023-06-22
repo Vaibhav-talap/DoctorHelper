@@ -11,6 +11,11 @@ const DoctorHome = () => {
     const searchedEmailHandler = (event) => {
         setSearchedEmail(event.target.value);
     }
+    const logoutHandler = () => {
+        localStorage.removeItem('token');
+        navigate('/');
+    }
+
     const doctorHomeSubmitHandler = (event) => {
         event.preventDefault();
         const requestOptions = {
@@ -37,7 +42,7 @@ const DoctorHome = () => {
                     <ul className={dhomeclasses['flex']}>
                         <li><Link to="/NewPatient" className={dhomeclasses['link']}>New Patient</Link></li>
                         <li><Link to="/DisplayPatient" className={dhomeclasses['link']}>Patient List</Link></li>
-                        <li><Link to="/" className={dhomeclasses['link']}>Logout</Link></li>
+                        <li><button onClick={logoutHandler} className={dhomeclasses['link']}>Logout</button></li>
                     </ul>
                 </div>
             </div>
