@@ -12,6 +12,7 @@ import PatientMedicalRecordList from './Components/PatientMedicalRecordList';
 import { checkAuthLoader } from './util/auth';
 import { createBrowserRouter } from 'react-router-dom';
 import { RouterProvider } from 'react-router-dom';
+import DoctorSignup from './Components/DoctorSignup';
 
 
 
@@ -39,6 +40,7 @@ import { RouterProvider } from 'react-router-dom';
 const router = createBrowserRouter([
   { path: '/', element: <LoginDecide /> },
   { path: '/doctorlogin', element: <LoginDoctor /> },
+  { path: '/doctorSignup', element: <DoctorSignup /> },
   { path: '/DoctorHome', element: <DoctorHome />, loader: checkAuthLoader },
   { path: '/NewPatient', element: <NewPatient />, loader: checkAuthLoader },
   { path: '/DisplayPatient', element: <Displaypatient />, loader: checkAuthLoader },

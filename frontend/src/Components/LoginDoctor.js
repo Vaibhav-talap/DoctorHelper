@@ -78,7 +78,7 @@ const LoginDoctor = () => {
                         </form>
                     </main>
                     <footer className={classes['signup-footer']}>
-                        <div>Dont't have an Account? <Link to="#" className={classes['link']}>Sign-up</Link></div>
+                        <div>Dont't have an Account? <Link to="/doctorSignup" className={classes['link']}>Sign-up</Link></div>
                     </footer>
 
                 </div>
