@@ -1,0 +1,17 @@
+.result-List {
+  width: 125%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 8px #ddd;
+  border-radius: 10px;
+  margin-top: 1rem;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+.list-item {
+  padding: 10px 20px;
+}
+.list-item:hover {
+  background-color: #efefef;
+}

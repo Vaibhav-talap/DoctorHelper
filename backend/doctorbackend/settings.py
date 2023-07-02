@@ -40,9 +40,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'clinic',
     'corsheaders',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -80,7 +82,7 @@ WSGI_APPLICATION = 'doctorbackend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'doctorhelper',
+        'NAME': 'doctorhelper2',
         'HOST': 'localhost',
         'USER': 'root',
         'PASSWORD': 'root'
@@ -143,3 +145,8 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]

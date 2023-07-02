@@ -40,7 +40,11 @@ const MedicalRecordFormModal = (props) => {
             };
             fetch(`http://127.0.0.1:8000/clinic/medicalRecords/${props.record.id}/`, requestOptions)
                 .then(response => response.json())
-                .then(data => navigate(`/PatientMedicalRecords/${id}`));
+                .then(data => {
+                    navigate(`/PatientMedicalRecords/${id}`)
+                    props.updateRenderBool();
+                    props.onConfirm();
+                });
             // updateRenderBool={setRenderBool} renderBoolValue = {renderBool}
         }
         else {
@@ -51,12 +55,16 @@ const MedicalRecordFormModal = (props) => {
             };
             fetch('http://127.0.0.1:8000/clinic/medicalRecords/', requestOptions)
                 .then(response => response.json())
-                .then(data => navigate(`/PatientMedicalRecords/${id}`));
+                .then(data => {
+                    navigate(`/PatientMedicalRecords/${id}`)
+                    props.updateRenderBool();
+                    props.onConfirm();
+                });
 
         }
 
-        props.updateRenderBool();
-        props.onConfirm();
+        // props.updateRenderBool();
+        // props.onConfirm();
         // .then(data => navigate('/DoctorHome'));
 
 

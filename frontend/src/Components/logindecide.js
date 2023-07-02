@@ -13,7 +13,7 @@ const LoginDecide = () => {
             <div className={classes["login-decide"]}>
                 <div className={`${classes['container']} ${classes['login-decidebody']} ${classes['flex']}`}>
                     <Link to="/doctorlogin" className={classes["loginselect-button"]}>Doctor Login</Link>
-                    <Link to="/patient" className={classes["loginselect-button"]}>Patient Login</Link>
+                    <Link to="/patientlogin" className={classes["loginselect-button"]}>Patient Login</Link>
                 </div>
 
             </div>

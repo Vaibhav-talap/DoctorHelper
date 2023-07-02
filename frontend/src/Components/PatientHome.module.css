@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Roboto:wght@400;700&display=swap");
-
 * {
   margin: 0;
   padding: 0;
@@ -13,7 +12,7 @@
   --padding-inline-section: 20px;
 }
 .container {
-  max-width: 1180px;
+  max-width: 1440px;
   margin-inline: auto;
   padding-inline: var(--padding-inline-section);
 }
@@ -28,13 +27,19 @@
 
 .logo h3 {
   display: inline-block;
+  margin-left: 5px;
+  color: #2b4c48;
 
   /* padding-bottom: 10px; */
   /* margin-bottom: 10px; */
 }
+/* .logo i {
+  background-color: #0e5555;
+} */
 .header {
   justify-content: space-between;
   background-color: #ccfff5;
+  padding: 10px;
 }
 
 .nav-links ul {
@@ -45,7 +50,7 @@ ul {
   list-style: none;
 }
 .link {
-  color: white;
+  color: white !important;
   width: 100%;
   padding: 10px;
   border: 2px solid #cccc;
@@ -53,16 +58,17 @@ ul {
   background-color: #136d6d;
   font-size: 1rem;
   margin-top: 4px;
+  text-decoration: none;
 }
-.link Link:hover {
-  background-color: #404b4db6;
+a:hover {
+  background-color: #125a5a;
 }
 
 .doctorHome-body {
   font-family: "Poppins", sans-serif;
   width: 100%;
-  height: 50vw;
-  background-image: url(../../assests/7.png);
+  height: 100vh;
+  /* background-image: url(../../assests/7resized.png); */
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -72,7 +78,7 @@ ul {
   margin-inline: auto;
   position: relative;
   top: 40%;
-  left: 7%;
+  left: 9%;
   transform: translateY(-90%);
   background-color: #d0eae5b7;
   border-radius: 8px;
@@ -111,4 +117,73 @@ ul {
 }
 .search-body div button:hover {
   background-color: #0e5555;
+}
+.patienttable {
+  font-family: "Poppins", sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.patienttable td,
+.patienttable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+button {
+  color: white;
+  padding: 10px;
+  border: 2px solid #cccc;
+  border-radius: 6px;
+  background-color: #136d6d;
+  font-size: 1rem;
+  margin-top: 4px;
+  display: inline-block;
+}
+
+.patienttable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.patienttable tr:hover {
+  background-color: #ddd;
+}
+
+.patienttable thead {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04aa6d;
+  color: white;
+}
+.patienttable td button {
+  margin-inline: 10px;
+}
+.header {
+  text-align: center;
+  background-color: #a5edd3;
+  font-family: "Poppins", sans-serif;
+}
+.list-header {
+  text-align: center;
+  background-color: #3aa57e;
+  font-family: "Poppins", sans-serif;
+  border-style: solid;
+  border-color: rgb(110, 153, 143);
+}
+h3 {
+  text-align: center;
+}
+h2 {
+  margin-bottom: 0 !important;
+  padding: 4px;
+}
+.navigationMenu {
+  margin-top: 40px;
+
+  width: 100%;
+}
+nav {
+  display: block;
+  padding-left: 43%;
 }

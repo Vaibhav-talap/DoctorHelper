@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import classes from './LoginDoctor.module.css';
+import ploginclasses from './PatientLogin.module.css';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import ErrorModal from "./ErrorModal";
 
-const LoginDoctor = () => {
+const PatientLogin = () => {
 
     const [enteredEmail, setEnteredEmail] = useState('');
     const [enteredPasseord, setenteredPasseord] = useState('');
@@ -12,11 +12,8 @@ const LoginDoctor = () => {
     const [error, setError] = useState();
     var validatedData;
     const setvalidateedData = (data) => {
-        // { data === 'ok' ? navigate('/doctorHome') : setError(data) }
-        // console.log(data.access);
-        // localStorage.setItem('token', data.access);
         { data.responseMessage === 'ok' && localStorage.setItem('token', data.access) }
-        { data.responseMessage === 'ok' && navigate(`/doctorHome/${data.id}`) }
+        { data.responseMessage === 'ok' && navigate(`/PatientHome/${data.id}`) }
         { data.responseMessage != 'ok' && setError(data.responseMessage) }
 
     }
@@ -37,7 +34,7 @@ const LoginDoctor = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email: enteredEmail, password: enteredPasseord })
         };
-        fetch('http://127.0.0.1:8000/clinic/doctorValidate/', requestOptions)
+        fetch('http://127.0.0.1:8000/clinic/patientValidate/', requestOptions)
             .then(response => response.json())
             .then(data => setvalidateedData(data));
 
@@ -56,12 +53,12 @@ const LoginDoctor = () => {
     return (
         <div>
             {error && <ErrorModal data={error} onClick={errorHandler} />}
-            <div className={classes['outer-box']}>
-                <div className={classes['inner-box']}>
-                    <header className={classes['signin-header']}>
+            <div className={ploginclasses['outer-box']}>
+                <div className={ploginclasses['inner-box']}>
+                    <header className={ploginclasses['signin-header']}>
                         <h1>Sign-in</h1>
                     </header>
-                    <main className={classes['signin-body']}>
+                    <main className={ploginclasses['signin-body']}>
                         <form onSubmit={submitHandler}>
                             <div>
                                 <label htmlFor="email">Email</label>
@@ -77,13 +74,13 @@ const LoginDoctor = () => {
 
                         </form>
                     </main>
-                    <footer className={classes['signup-footer']}>
-                        <div>Dont't have an Account? <Link to="/doctorSignup" className={classes['link']}>Sign-up</Link></div>
+                    <footer className={ploginclasses['signup-footer']}>
+                        <div>Dont't have an Account? <Link to="/patientSignup" className={ploginclasses['link']}>Sign-up</Link></div>
                     </footer>
 
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
-export default LoginDoctor;
+export default PatientLogin;

@@ -1,6 +1,6 @@
 from rest_framework import serializers, fields
 from rest_framework.validators import UniqueValidator
-from .models import Doctor, Patient, PatientMedicalRecord
+from .models import Doctor, Patient, PatientMedicalRecord, PatientWaitingList
 
 
 class MedicalRecordSerializer(serializers.ModelSerializer):
@@ -8,9 +8,34 @@ class MedicalRecordSerializer(serializers.ModelSerializer):
     class Meta:
         date = serializers.DateField(
             format="%Y-%m-%d", input_formats=["%Y-%m-%d"])
-        model = PatientMedicalRecord
-        fields = ['id', 'date', 'diseasetype', 'recommededMedicine', 'patient']
 
+        model = PatientMedicalRecord
+        fields = ['id', 'date', 'diseasetype',
+                  'recommededMedicine', 'patient']
+
+
+class DoctorSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Doctor
+        fields = ['id', 'first_name', 'last_name', 'email', 'phone', 'age']
+
+
+class PatientWaitingListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PatientWaitingList
+        fields = ['id', 'doctor', 'patient', 'email']
+    doctor = serializers.PrimaryKeyRelatedField(
+        queryset=Doctor.objects.all()
+    )
+    patient = serializers.PrimaryKeyRelatedField(
+        queryset=Patient.objects.all()
+    )
+    email = serializers.SerializerMethodField(
+        method_name='gettingpatientEmailById')
+
+    def gettingpatientEmailById(self, patientWatitingList: PatientWaitingList):
+        return patientWatitingList.patient.email
     # id = serializers.IntegerField()
     # date = serializers.DateField()
     # diseasetype = serializers.CharField(max_length=255)

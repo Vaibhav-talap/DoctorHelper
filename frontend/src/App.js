@@ -13,7 +13,9 @@ import { checkAuthLoader } from './util/auth';
 import { createBrowserRouter } from 'react-router-dom';
 import { RouterProvider } from 'react-router-dom';
 import DoctorSignup from './Components/DoctorSignup';
-
+import PatientSignup from './Components/PatientSignup';
+import PatientLogin from './Components/PatientLogin';
+import Appoinment from './Components/Appoinment';
 
 
 
@@ -41,13 +43,16 @@ const router = createBrowserRouter([
   { path: '/', element: <LoginDecide /> },
   { path: '/doctorlogin', element: <LoginDoctor /> },
   { path: '/doctorSignup', element: <DoctorSignup /> },
-  { path: '/DoctorHome', element: <DoctorHome />, loader: checkAuthLoader },
+  { path: '/patientSignup', element: <PatientSignup /> },
+  { path: '/DoctorHome/:id', element: <DoctorHome />, loader: checkAuthLoader },
   { path: '/NewPatient', element: <NewPatient />, loader: checkAuthLoader },
   { path: '/DisplayPatient', element: <Displaypatient />, loader: checkAuthLoader },
   { path: '/PatientMedicalRecords/:id', element: <PatientMedicalRecord />, loader: checkAuthLoader },
   { path: '/PatientMedicalRecordList/:id', element: <PatientMedicalRecordList /> },
   { path: '/NewPatientMedicalRecord/:id', element: <PatientNewMedicalRecord />, loader: checkAuthLoader },
-  { path: '/patient', element: <PatientHome /> },
+  { path: '/PatientHome/:id', element: <PatientHome /> },
+  { path: '/patientlogin', element: <PatientLogin /> },
+  { path: '/Appoinment/:id', element: <Appoinment /> },
 ])
 
 

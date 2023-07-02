@@ -113,7 +113,7 @@ const PatientMedicalRecord = () => {
                     <button onClick={newRecordModalFormhandler}>New Record</button>
                 </div>
                 {
-                    patientMedicalRecord.length === 0 ? <h3>No Previous data found</h3 > :
+                    patientMedicalRecord.length === 0 ? <h3>No Patient in Waiting List found</h3 > :
                         <><table className={patientMedicalClasses['patienttable']}>
                             <thead>
                                 <th>ID</th>
